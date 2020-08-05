@@ -25,26 +25,26 @@ const RESOURCES = {
 "assets/fonts/Product%2520Sans%2520Regular.ttf": "eae9c18cee82a8a1a52e654911f8fe83"
 };
 
-self.addEventListener('activate', function (event) {
-  event.waitUntil(
-    caches.keys().then(function (cacheName) {
-      return caches.delete(cacheName);
-    }).then(function (_) {
-      return caches.open(CACHE_NAME);
-    }).then(function (cache) {
-      return cache.addAll(Object.keys(RESOURCES));
-    })
-  );
-});
+// self.addEventListener('activate', function (event) {
+//   event.waitUntil(
+//     caches.keys().then(function (cacheName) {
+//       return caches.delete(cacheName);
+//     }).then(function (_) {
+//       return caches.open(CACHE_NAME);
+//     }).then(function (cache) {
+//       return cache.addAll(Object.keys(RESOURCES));
+//     })
+//   );
+// });
 
-self.addEventListener('fetch', function (event) {
-  event.respondWith(
-    caches.match(event.request)
-      .then(function (response) {
-        if (response) {
-          return response;
-        }
-        return fetch(event.request);
-      })
-  );
-});
+// self.addEventListener('fetch', function (event) {
+//   event.respondWith(
+//     caches.match(event.request)
+//       .then(function (response) {
+//         if (response) {
+//           return response;
+//         }
+//         return fetch(event.request);
+//       })
+//   );
+// });
